@@ -14,23 +14,14 @@ public class AnnouncementContext : IdentityDbContext<User>
     
     public DbSet<Announcement> Announcements { get; set; }
     
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder builder)
     {
-        base.OnModelCreating(modelBuilder);
+        base.OnModelCreating(builder);
 
-        modelBuilder.Entity<IdentityRole>()
+        builder.Entity<IdentityRole>()
             .HasData(
-                new IdentityRole
-                {
-                    Id = "1",
-                    Name = "Admin",
-                    NormalizedName = "ADMIN"
-                },
-                new IdentityRole
-                {
-                    Id = "2",
-                    Name = "User",
-                    NormalizedName = "USER"
-                });
+                new IdentityRole {Name = "Member", NormalizedName = "MEMBER"},
+                new IdentityRole {Name = "Admin", NormalizedName = "ADMIN"}
+            );
     }
 }

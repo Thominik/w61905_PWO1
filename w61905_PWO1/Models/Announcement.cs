@@ -1,4 +1,6 @@
-﻿namespace w61905_PWO1.Models;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace w61905_PWO1.Models;
 
 public class Announcement
 {
@@ -8,9 +10,10 @@ public class Announcement
     public string Description { get; set; }
     public long Price { get; set; }
     public string Location { get; set; }
-    public string PublicId { get; set; }
     public string PhotoUrl { get; set; }
     public string PhoneNumber { get; set; }
     public string AnnouncementOwner { get; set; }
+    public string OptionalEmail { get; set; }
+    public string PublicId { get; set; }
     
 }

@@ -17,7 +17,7 @@ public class DbInitializer
 
             await userManager.CreateAsync(user, "Pa$$word1");
             await userManager.AddToRoleAsync(user, "Member");
-
+            
             var admin = new User
             {
                 UserName = "admin",
@@ -25,7 +25,7 @@ public class DbInitializer
             };
 
             await userManager.CreateAsync(admin, "Pa$$word1");
-            await userManager.AddToRolesAsync(admin, new[] { "Member", "Admin" });
+            await userManager.AddToRolesAsync(admin, new[] {"Member", "Admin"});
         }
 
         if (context.Announcements.Any()) return;
@@ -42,7 +42,8 @@ public class DbInitializer
                 Category = "auta osobowe",
                 AnnouncementOwner = "Justyna Nowak",
                 PhoneNumber = "725725726",
-                PhotoUrl = "/images/people/BMWX3.png"
+                PhotoUrl = "/images/people/BMWX3.png",
+                OptionalEmail = "justynan33@gmail.com"
             },
             new Announcement
             {
@@ -54,7 +55,8 @@ public class DbInitializer
                 Category = "komputery",
                 AnnouncementOwner = "Michał Kowalski",
                 PhoneNumber = "987456123",
-                PhotoUrl = "/images/people/MacAir.png"
+                PhotoUrl = "/images/people/MacAir.png",
+                OptionalEmail = "michaelo@gmail.com"
             },
             new Announcement
             {
@@ -66,7 +68,8 @@ public class DbInitializer
                 Category = "telefony",
                 AnnouncementOwner = "Adam Kowalski",
                 PhoneNumber = "445765221",
-                PhotoUrl = "/images/people/samsung.png"
+                PhotoUrl = "/images/people/samsung.png",
+                OptionalEmail = "adasfast@gmail.com"
             },
             new Announcement
             {
@@ -78,7 +81,8 @@ public class DbInitializer
                 Category = "maszyny",
                 AnnouncementOwner = "Tomek Orzech",
                 PhoneNumber = "987456123",
-                PhotoUrl = "/images/people/felder.png"
+                PhotoUrl = "/images/people/felder.png",
+                OptionalEmail = "tomekfelder@feldergroup.com"
             },
         };
 
