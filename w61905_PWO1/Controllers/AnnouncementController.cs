@@ -32,6 +32,25 @@ public class AnnouncementController : BaseApiController
 
         return Ok(announcements);
     }
+    
+    [HttpGet("GetAllWithFilters")]
+    public async Task<ActionResult<PagedList<Announcement>>> 
+        GetAnnouncements([FromQuery]AnnouncementParams announcementParams)
+    {
+        var query = _context.Announcements
+            .Sort(announcementParams.OrderBy)
+            .Search(announcementParams.SearchTerm)
+            .CityFilter(announcementParams.CityTerm)
+            .SubjectFilter(announcementParams.CategoryTerm)
+            .AsQueryable();
+
+        var announcements = await PagedList<Announcement>.ToPagedList(query,
+            announcementParams.PageNumber, announcementParams.PageSize);
+        
+        Response.AddPaginationHeader(announcements.MetaData);
+
+        return announcements;
+    }
 
     
     [HttpGet("GetAnnouncementsByUsername")]
